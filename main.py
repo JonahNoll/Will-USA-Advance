@@ -22,6 +22,10 @@ countries = [USA, Mexico, Italy]
 def game_score(italy_score=0, mexico_score=0, innings=0):
     italy_score  = int(input("\nHow many runs did Italy score?: "))
     mexico_score = int(input("How many runns did Mexico score?: "))
+    while italy_score == mexico_score:
+        print("\n*** ERROR: Game cannot end in tie ***")
+        italy_score  = int(input("\nHow many runs did Italy score?: "))
+        mexico_score = int(input("How many runns did Mexico score?: "))
 
     winner_check(italy_score, mexico_score)
 
@@ -48,6 +52,9 @@ if this line of code is reached that implies Italy lost hence one less inning fo
 
 def game_length(innings=0):
     innings = int(input("How many innings did the game last?: "))
+    while innings < 9:
+        print("\n*** ERROR: Innings cannot be less than 9 ***\n")
+        innings = int(input("How many innings did the game last?: "))
     Mexico.o += 3 * innings
     Italy.o  += 3 * (innings - 1)
 
@@ -70,7 +77,7 @@ def main():
         print("\n*** USA FAIL TO ADVANCE ***")
 
 
-    print(f"\nStandings:\n1. {countries_sorted[0].country} \n2. {countries_sorted[1].country} \n3. {countries_sorted[2].country}")
+    print(f"\nStandings:\n1. {countries_sorted[0].country} 3-1 \n2. {countries_sorted[1].country} 3-1 \n3. {countries_sorted[2].country} 3-1")
     print(f"\nRun Quotient:\n1. {countries_sorted[0].country}: {countries_sorted[0].rq} \n2. {countries_sorted[1].country}: {countries_sorted[1].rq} \n3. {countries_sorted[2].country}: {countries_sorted[2].rq}")
 
 
